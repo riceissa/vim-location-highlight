@@ -58,9 +58,10 @@ for m, c in vim_atomic_movements:
 use = [tup for tup in vim_movements if tup[1] <= 1]
 print(use)
 
-fname = "longlines.vim"
+fname = "test.txt"
+starting_pos = "100G22|"
 with open('junk.sh', 'w') as f:
     for m in use:
-        cmd = """vim -c 'exe "normal {}"' -c "let @a=getcurpos()[1]" -c "let @b=getcurpos()[2]" -c "edit junk" -c "$ | put a | put b | normal GkJ" -c "write | quit" {}""".format(m[0], fname)
+        cmd = """vim -Nu NONE -c 'exe "normal {}{}"' -c "let @a=getcurpos()[1]" -c "let @b=getcurpos()[2]" -c "edit junk" -c "$ | put a | put b | normal GkJ" -c "write | quit" {}""".format(starting_pos, m[0], fname)
         f.write(cmd + "\n")
 
