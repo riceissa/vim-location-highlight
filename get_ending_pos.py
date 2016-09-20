@@ -47,17 +47,32 @@ vim_movements = []
 vim_movements.extend(vim_atomic_movements)
 for cmd in ["f", "F", "t", "T"]:
     # print(cmd)
-    for c_ord in range(ord("A"), ord("z")+1):
-        c = chr(c_ord)
-        # print(c)
+    # okay, \ and ' and " also work, but i don't want to deal with escaping
+    # those right now
+    for c in "!@#$%^&*()-_=+[{}]|;:,<>./?`~1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz":
         vim_movements.append((cmd+c, 2))
 for m, c in vim_atomic_movements:
     for count in range(1, 10):
         vim_movements.append((str(count)+m, c+1))
 # print(vim_movements)
-# print(len(vim_movements))
+print(len(vim_movements))
 
-use = [tup for tup in vim_movements if tup[1] <= 2]
+tmp = []
+max_allowed = 2
+for m1, _ in vim_movements:
+    for m2, _ in vim_movements:
+        for m3, _ in vim_movements:
+            tmp.append(m1)
+            tmp.append(m2)
+            tmp.append(m3)
+            tmp.append(m1+m2)
+            tmp.append(m1+m3)
+            tmp.append(m2+m3)
+            tmp.append(m1+m2+m3)
+
+use = [tup for tup in tmp if tup[1] <= max_allowed]
+print(use[:10])
+print(len(use), len(set(use)))
 # print(use)
 
 fname = "test.txt"
