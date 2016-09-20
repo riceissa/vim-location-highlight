@@ -31,6 +31,8 @@ vim_atomic_movements = [
         (r"\<C-U>", 1),
         (r"\<C-D>", 1),
         ("gg", 2),
+        ("ge", 2),
+        ("gE", 2),
         ("*n", 2),
         ("#", 2),
         ("^", 1),
@@ -55,8 +57,8 @@ for m, c in vim_atomic_movements:
 # print(vim_movements)
 # print(len(vim_movements))
 
-use = [tup for tup in vim_movements if tup[1] <= 1]
-print(use)
+use = [tup for tup in vim_movements if tup[1] <= 2]
+# print(use)
 
 fname = "test.txt"
 starting_pos = "100G22|"
