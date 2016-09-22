@@ -7,3 +7,7 @@
   `junk` into a valid highlighting file that Vim can use. Save `junk`.
 - Go to `test.txt` (can by any file). Do `:source junk`. Now all of the
   positions are highlighted.
+
+Here is an example limiting to 2 keystrokes:
+
+![](example.png)
