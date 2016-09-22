@@ -74,6 +74,7 @@ def add_with_prefix(prefix=("", 0), movements=vim_movements, max_allowed=2):
 if __name__ == "__main__":
     fname = "test.txt"
     starting_pos = get_starting_pos(line=100, col=22)
+    use = add_with_prefix()
     with open('junk.sh', 'w') as f:
         for m in use:
             cmd = """vim -Nu NONE -c 'exe "normal {}{}"' -c "let @a=getcurpos()[1]" -c "let @b=getcurpos()[2]" -c "edit junk" -c "$ | put a | put b | normal GkJ" -c "write | quit" {}""".format(starting_pos, m[0], fname)
