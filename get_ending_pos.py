@@ -71,28 +71,6 @@ def add_with_prefix(prefix=("", 0), movements=vim_movements, max_allowed=2):
             res.extend(add_with_prefix((pm+m, pc+c), movements, max_allowed))
     return res
 
-# tmp = []
-# max_allowed = 2
-# for m1, c1 in vim_movements:
-#     if c1 <= max_allowed:
-#         tmp.append((m1, c1))
-#     if c1 < max_allowed:
-#         for m2, c2 in vim_movements:
-#             if c1 + c2 <= max_allowed:
-#                 tmp.append((m1+m2, c1+c2))
-#             if c1 + c2 < max_allowed:
-#                 for m3, c3 in vim_movements:
-#                     tmp.append(m3)
-#                     tmp.append(m1+m2)
-#                     tmp.append(m1+m3)
-#                     tmp.append(m2+m3)
-#                     tmp.append(m1+m2+m3)
-
-# use = [tup for tup in tmp if tup[1] <= max_allowed]
-# print(use[:10])
-# print(len(use), len(set(use)))
-# print(use)
-
 if __name__ == "__main__":
     fname = "test.txt"
     starting_pos = get_starting_pos(line=100, col=22)
