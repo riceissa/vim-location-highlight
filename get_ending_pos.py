@@ -64,15 +64,10 @@ for m, c in vim_atomic_movements:
 def add_with_prefix(prefix=("", 0), movements=vim_movements, max_allowed=2):
     res = []
     pm, pc = prefix
-    if pm:
-        print("prefix is not empty and is", pm)
     for m, c in movements:
-        if pm and c < 2:
-            print("trying", pm, pc, m, c, "sums to", pc+c)
         if pc + c <= max_allowed:
             res.append((pm+m, pc+c))
         if pc + c < max_allowed:
-            print("calling with", pm, m)
             res.extend(add_with_prefix((pm+m, pc+c), movements, max_allowed))
     return res
 
