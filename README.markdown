@@ -11,3 +11,7 @@
 Here is an example limiting to 2 keystrokes:
 
 ![](example.png)
+
+## License
+
+CC0.
